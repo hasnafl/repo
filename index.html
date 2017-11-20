@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Switch Display Options - DesignMag Demo</title>
+  <meta name="author" content="Jake Rocheleau">
+  <link rel="shortcut icon" href="http://designm.ag/favicon.ico">
+  <link rel="icon" href="http://designm.ag/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+</head>
+
+<body>
+  <h1>WELCOME<span> TO MY WEBSITE</span></h1>
+  <h3></h3>
+  
+  <div id="w">
+    <span class="options">Switch Options: 
+      <a href="#" id="details-list" class="sorticon active" title="List View"><img src="images/details-list.png" alt="list"></a> 
+      <a href="#" id="thumbnails-list" class="sorticon" title="Thumbnail View"><img src="images/thumbnails-list.png" alt="thumbnails"></a>
+    </span>
+    <!-- icons: http://findicons.com/pack/1689/splashy/ -->
+    <div id="content">
+      <ul id="listdisplay" class="clearfix">
+        <li class="clearfix">
+          <span class="listimg"><a href="http://dribbble.com/shots/1314496-80-s-Wrestlers-Hulk-Hogan" target="_blank"><img src="images/01-hulk-hogan.jpg"></a></span>
+          <span class="innercontent">
+          <br>
+          <br>
+          <br>
+            <h2>PROFILE</h2>
+            <p></p>
+          </span>
+        </li><!-- row #1 -->
+      </ul>
+    </div>
+  </div>
+<script type="text/javascript">
+$(function(){
+  $('.options a').on('click', function(e){
+    e.preventDefault();
+    
+    if($(this).hasClass('active')) {
+      // do nothing if the clicked link is already active
+      return;
+    }
+    
+    $('.options a').removeClass('active');
+    $(this).addClass('active');
+    
+    var clickid = $(this).attr('id');
+    
+
+    $('#listdisplay').fadeOut(240, function(){
+      if(clickid == 'thumbnails-list') {
+        $(this).addClass('thumbview');
+      } else {
+        $(this).removeClass('thumbview');
+      }
+
+      $('#listdisplay').fadeIn(200);  
+    });
+  });
+});
+</script>
+</body>
+</html>
